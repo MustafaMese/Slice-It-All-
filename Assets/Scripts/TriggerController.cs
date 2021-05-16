@@ -4,9 +4,27 @@ using UnityEngine;
 
 public class TriggerController : MonoBehaviour
 {
-    public void Receive()
-    {
+    [SerializeField] InputManager inputManager;
 
+    private void Start() 
+    {
+        inputManager = GetComponent<InputManager>();    
+    }
+
+    public void Receive(TriggerType trigger)
+    {
+        inputManager.Stop();
+
+        switch (trigger)
+        {
+            case TriggerType.EDGE:
+
+                break;
+            case TriggerType.GRASP:
+
+                break;
+        }
+        
     }
 }
 

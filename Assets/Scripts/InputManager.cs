@@ -13,9 +13,19 @@ public class InputManager : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            mover.MoveOrder();
-            rotater.RotateOrder();
+            Flip();
         }
     }
 
+    public void Flip()
+    {
+        mover.FlipOrder();
+        rotater.FlipOrder();
+    }
+
+    public void Stop()
+    {
+        mover.StopOrder();
+        rotater.StopOrder();
+    }
 }

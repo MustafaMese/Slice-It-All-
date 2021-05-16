@@ -25,17 +25,36 @@ public class Mover : MonoBehaviour
         if (Vector3.Distance(transform.position, targetPos) < distance)
         {
             canMove = false;
-            rb.useGravity = true;
-            rb.isKinematic = false;
+            ConfigureRigidbody(false);
             targetPos = Vector3.zero;
         }
     }
 
-    public void MoveOrder()
+    public void StopOrder()
+    {
+        canMove = false;
+        ConfigureRigidbody(true);
+    }
+
+    public void FlipOrder()
     {
         targetPos = transform.position + targetVector;
         canMove = true;
-        rb.isKinematic = true;
-        rb.useGravity = false;
+        ConfigureRigidbody(true);
+    }
+
+    private void ConfigureRigidbody(bool close)
+    {
+        if(close)
+        {
+            rb.isKinematic = true;
+            rb.useGravity = false;
+        }
+        else
+        {
+            rb.useGravity = true;
+            rb.isKinematic = false;
+        }
+        
     }
 }

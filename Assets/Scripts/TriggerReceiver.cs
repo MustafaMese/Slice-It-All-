@@ -9,15 +9,6 @@ public class TriggerReceiver : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) 
     {
-        if(triggerType == TriggerType.EDGE)
-        {
-            
-        }
-        else
-        {
-
-        }
-
-        trigger.Receive();
+        trigger.Receive(triggerType);
     }
 }
