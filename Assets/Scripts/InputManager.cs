@@ -13,13 +13,17 @@ public class InputManager : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            Flip();
+            Flip(true);
         }
     }
 
-    public void Flip()
+    public void Flip(bool forward)
     {
-        mover.FlipOrder();
+        if(forward)
+            mover.FlipOrder();
+        else
+            mover.BackFlipOrder();
+
         rotater.FlipOrder();
     }
 

@@ -5,18 +5,17 @@ using UnityEngine;
 
 public class Mover : MonoBehaviour
 {
-    private enum Phase { RISE, FALL }
+    private enum Phase { FORWARD, BACK, FALL }
     private Phase phase;
 
-    [SerializeField] Rigidbody rb;
     [SerializeField] float distance;
     [SerializeField] float smooth;
 
-    [SerializeField] Vector3 riseVector;
+    [SerializeField] Vector3 forwardVector;
+    [SerializeField] Vector3 backVector;
     [SerializeField] Vector3 fallVector;
 
     private Vector3 targetVector;
-
     private Vector3 targetPos;
     private bool canMove;
 
@@ -26,13 +25,16 @@ public class Mover : MonoBehaviour
             Move();
     }
 
-
     private void Move()
     {
         transform.position = Vector3.MoveTowards(transform.position, targetPos, Time.deltaTime * smooth);
         if (Vector3.Distance(transform.position, targetPos) < distance)
         {
-            phase = Phase.FALL;
+            if(phase == Phase.FORWARD)
+                phase = Phase.FALL;
+            else if(phase == Phase.BACK)
+                phase = Phase.FORWARD;
+                
             SetTarget();
         }
     }
@@ -41,11 +43,14 @@ public class Mover : MonoBehaviour
     {
         switch (phase)
         {
-            case Phase.RISE:
-                targetVector = riseVector;
+            case Phase.FORWARD:
+                targetVector = forwardVector;
                 break;
             case Phase.FALL:
                 targetVector = fallVector;
+                break;
+            case Phase.BACK:
+                targetVector = backVector;
                 break;
         }
 
@@ -60,7 +65,14 @@ public class Mover : MonoBehaviour
     public void FlipOrder()
     {
         canMove = true;
-        phase = Phase.RISE;
+        phase = Phase.FORWARD;
+        SetTarget();
+    }
+
+    public void BackFlipOrder()
+    {
+        canMove = true;
+        phase = Phase.BACK;
         SetTarget();
     }
 }

@@ -13,15 +13,13 @@ public class TriggerController : MonoBehaviour
 
     public void Receive(TriggerType trigger)
     {
-        inputManager.Stop();
-
         switch (trigger)
         {
             case TriggerType.EDGE:
-
+                inputManager.Stop();
                 break;
             case TriggerType.GRASP:
-
+                inputManager.Flip(false);
                 break;
         }
         
