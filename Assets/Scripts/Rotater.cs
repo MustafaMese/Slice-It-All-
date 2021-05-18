@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Rotater : MonoBehaviour
 {
-    public enum Phase { BEGIN, START, FLIP, SLOW, END }
+    public enum Phase { BEGIN, START, FLIP, SLOW, END, CUT }
 
     private Phase phase = Phase.BEGIN;
 
@@ -13,6 +13,7 @@ public class Rotater : MonoBehaviour
     [SerializeField] float standartSpeed;
     [SerializeField] float slowSpeed;
     [SerializeField] float minSpeed;
+    [SerializeField] float cutSpeed;
     [SerializeField] float rotTime;
 
     private float speed = 0;
@@ -32,6 +33,11 @@ public class Rotater : MonoBehaviour
     public void FlipOrder()
     {
         phase = Phase.FLIP;
+    }
+
+    public void CutOrder()
+    {
+        phase = Phase.CUT;
     }
 
     private void Rotate()
@@ -58,6 +64,9 @@ public class Rotater : MonoBehaviour
                 speed = slowSpeed;
                 if (current >= 70)
                     phase = Phase.END;
+                break;
+            case Phase.CUT:
+                speed = cutSpeed;
                 break;
             case Phase.END:
                 speed = minSpeed;

@@ -17,10 +17,14 @@ public class TriggerReceiver : MonoBehaviour
                 if (other.tag == "Platform")
                     trigger.Receive(triggerType);
                 else if (other.tag == "Cuttable")
+                {
                     Cut(other);
+                    trigger.Receive();
+                }
                 break;
             case TriggerType.GRASP:
-                trigger.Receive(triggerType);
+                if (other.tag == "Platform" || other.tag == "Cuttable")
+                    trigger.Receive(triggerType);
                 break;
         }
         
@@ -47,5 +51,11 @@ public class TriggerReceiver : MonoBehaviour
         }
 
         shorn.SetActive(false);
+    }
+
+    private IEnumerator Disable(GameObject obj)
+    {
+        yield return new WaitForSeconds(1f);
+        obj.SetActive(false);
     }
 }

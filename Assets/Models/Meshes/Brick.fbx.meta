@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0bbc2cf8bfca2d24a8d431d20ae6f0d0
+guid: 76dfd530c91d3254596b5666a10385fb
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
@@ -8,7 +8,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: BrickColor
-    second: {fileID: 2100000, guid: b48c1b0a69292f9418a242ba4559c1a7, type: 2}
+    second: {fileID: 2100000, guid: f36a0ebec80d7e545886bc98baed498d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Corner
+    second: {fileID: 2100000, guid: c77430434c7b7f6458e921fcdbc64356, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

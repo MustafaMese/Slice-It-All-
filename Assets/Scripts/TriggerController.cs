@@ -21,8 +21,12 @@ public class TriggerController : MonoBehaviour
             case TriggerType.GRASP:
                 inputManager.Flip(false);
                 break;
-        }
-        
+        }   
+    }
+
+    public void Receive()
+    {
+        inputManager.Cut();
     }
 }
 

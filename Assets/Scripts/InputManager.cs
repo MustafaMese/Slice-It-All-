@@ -32,4 +32,10 @@ public class InputManager : MonoBehaviour
         mover.StopOrder();
         rotater.StopOrder();
     }
+
+    public void Cut()
+    {
+        mover.CutOrder();
+        rotater.CutOrder();
+    }
 }
