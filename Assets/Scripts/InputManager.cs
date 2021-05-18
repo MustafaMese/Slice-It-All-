@@ -8,6 +8,7 @@ public class InputManager : MonoBehaviour
 {
     [SerializeField] Mover mover;
     [SerializeField] Rotater rotater;
+    [SerializeField] Animator animator;
 
     private void Update() 
     {
@@ -22,8 +23,10 @@ public class InputManager : MonoBehaviour
         if(forward)
             mover.FlipOrder();
         else
+        {
+            animator.SetTrigger("hit");
             mover.BackFlipOrder();
-
+        }
         rotater.FlipOrder();
     }
 

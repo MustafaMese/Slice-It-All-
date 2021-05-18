@@ -13,7 +13,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: PlatformCorner
-    second: {fileID: 2100000, guid: 09c76392e2f94264a8fa8958c588258b, type: 2}
+    second: {fileID: 2100000, guid: 73cb1540ee4775f44bd16e05c1e4545a, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

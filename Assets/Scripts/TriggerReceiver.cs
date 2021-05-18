@@ -8,6 +8,7 @@ public class TriggerReceiver : MonoBehaviour
 {
     [SerializeField] TriggerController trigger;
     [SerializeField] TriggerType triggerType;
+    [SerializeField] float force;
 
     private void OnTriggerEnter(Collider other) 
     {
@@ -42,11 +43,11 @@ public class TriggerReceiver : MonoBehaviour
 
             Rigidbody rb1 = lower.AddComponent<Rigidbody>();
             lower.AddComponent<MeshCollider>().convex = true;
-            rb1.AddForce(-transform.forward * 200f, ForceMode.Force);
+            rb1.AddForce(-transform.forward * force, ForceMode.Force);
 
             Rigidbody rb2 = upper.AddComponent<Rigidbody>();
             upper.AddComponent<MeshCollider>().convex = true;
-            rb2.AddForce(transform.forward * 200f, ForceMode.Force);
+            rb2.AddForce(transform.forward * force, ForceMode.Force);
 
         }
 
