@@ -35,7 +35,7 @@ public class TriggerReceiver : MonoBehaviour
     {
         GameObject shorn = other.gameObject;
         SlicedHull hull = shorn.Slice(transform.position, transform.forward);
-    
+
         if(hull != null)
         {
             GameObject lower = hull.CreateLowerHull(shorn, shorn.GetComponent<Renderer>().material);
@@ -51,12 +51,16 @@ public class TriggerReceiver : MonoBehaviour
 
         }
 
+        StartCoroutine(TextPopup(shorn.transform.position));
         shorn.SetActive(false);
     }
 
-    private IEnumerator Disable(GameObject obj)
+    private IEnumerator TextPopup(Vector3 pos)
     {
+        GameObject obj = TextPopupManager.Instance.Pop();
+        pos.z = obj.transform.position.z;
+        obj.transform.position = pos;
         yield return new WaitForSeconds(1f);
-        obj.SetActive(false);
+        TextPopupManager.Instance.Push(obj);
     }
 }
